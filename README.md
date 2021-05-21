@@ -1,4 +1,4 @@
-# Crazy_sums
+# Crazy Sums
 
 Implementation of an method to find new relations between Dirichlet L-Series.
 
