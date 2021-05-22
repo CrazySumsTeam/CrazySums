@@ -1,3 +1,8 @@
+/*
+ * Copyright 2020-2021, Hadrien Barral, Arthur Leonard, Samuel Vivien and the CrazySums contributors
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+
 #pragma once
 #include <fstream>
 #if defined(__GNUC__) && !defined(__llvm__) && (__GNUC__ < 8)

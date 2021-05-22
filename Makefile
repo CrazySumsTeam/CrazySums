@@ -1,3 +1,6 @@
+# Copyright 2020-2021, Hadrien Barral, Arthur Leonard, Samuel Vivien and the CrazySums contributors
+# SPDX-License-Identifier: GPL-3.0-only
+
 MAKEFLAGS += --no-builtin-rules --no-builtin-variables
 .SUFFIXES:
 
