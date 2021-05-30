@@ -6,6 +6,7 @@
 constexpr int PRIME_MODULO = 997;
 
 #include <iostream>
+#include "configurations.h"
 #include "hformula.h"
 #include "generation.h"
 #include "print.h"
@@ -15,7 +16,7 @@ using namespace std;
 /*
  * Edit me as you wish to change the generated L-functions
  */
-static constexpr GenerationConstraintLine generation_constraints_lines[] = {
+static constexpr GenerationConstraintLine custom_generation_config_lines[] = {
     /* leaf_type                  , min_exp, max_exp, [extra min/max k, [min/max l]] */
     {FormulaNode::LEAF_LIOUVILLE  ,       0, 1,       {}},
     {FormulaNode::LEAF_TAUK       ,       0, 2,       {2, 2}},
@@ -32,9 +33,9 @@ static constexpr GenerationConstraintLine generation_constraints_lines[] = {
 /*
  * Edit me as you wish to change the generated L-functions
  */
-static constexpr GenerationConstraint generation_constraints = {
+static constexpr GenerationConstraint custom_generation_config = {
     .lines = generation_constraints_lines,
-    .lines_count = sizeof(generation_constraints_lines)/sizeof(generation_constraints_lines[0]),
+    .lines_count = sizeof(custom_generation_config_lines)/sizeof(custom_generation_config_lines[0]),
     .min_sum = 0,
     .max_sum = 8,
     .max_score = 6,
@@ -51,7 +52,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char *argv[]) {
 
     auto t1 = std::chrono::high_resolution_clock::now();
     RelationGenerator manager(&latex);
-    add_relations(manager, latex, generation_constraints);
+    add_relations(manager, latex, custom_generation_config);
 
     auto t2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<float> e21 = t2 - t1;
