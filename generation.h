@@ -173,10 +173,15 @@ static void add_relations(RelationGenerator &manager, Latex& latex,
                 default:
                     assert(false); /* Unknown leaf */
             }
+
+            int sscore = score + extra_k + extra_l + exp;
+            if (sscore > generation_constraints.max_score) {
+                return;
+            }
+
             fformula = formula * pow(fformula, exp);
             HFormula nname = name_append_component(name, gc->leaf_type, extra_k, extra_l, exp);
             int ssum = sum + (sum_extra * exp);
-            int sscore = score + extra_k + extra_l + exp;
             add_relations(manager, latex, generation_constraints,
                           constraint_idx, extra_k, extra_l+1,
                           fformula, nname, ssum, sscore, ffacts);

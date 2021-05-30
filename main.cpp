@@ -34,7 +34,7 @@ static constexpr GenerationConstraintLine custom_generation_config_lines[] = {
  * Edit me as you wish to change the generated L-functions
  */
 static constexpr GenerationConstraint custom_generation_config = {
-    .lines = generation_constraints_lines,
+    .lines = custom_generation_config_lines,
     .lines_count = sizeof(custom_generation_config_lines)/sizeof(custom_generation_config_lines[0]),
     .min_sum = 0,
     .max_sum = 8,
