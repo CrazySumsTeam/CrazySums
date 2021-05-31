@@ -27,7 +27,7 @@ build: $(BIN)
 
 $(BIN): main.cpp Makefile
 	$(CXX_TOOL) -o "$@" $< -Wall -Wextra -std=c++17 $(OPT) -march=native $(LFLAGS) -lpthread -MMD -g \
-	    ${EXTRA} $(GPROF) -DHAS_COLOR \
+	    $(GPROF) -DHAS_COLOR ${EXTRA} \
 
 run:
 	./$(BIN)
