@@ -1635,6 +1635,89 @@ private:
         return good;
     }
 
+    bool check_C31(const RelationSummary& summary, string& out_name) {
+        std::string name = "C-31";
+        vector<pair<HFormula, Rational>> vect{
+            {HFormulaLFunction(HFormulaProduct(
+                HFormulaLeaf(FormulaNode::LEAF_XI, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0}),
+                HFormulaLeaf(FormulaNode::LEAF_NU, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k+l"), .l = 0})
+                ), FormulaNode::Symbolic("s")), Rational(1)},
+        };
+        Relation formula = Relation(vect);
+        formula.classify_raw(name);
+        bool good = is_instance_of(RelationSummary::no_early_bailout, summary, formula, NULL, -1);
+        out_name = name;
+        return good;
+    }
+
+    bool check_C32(const RelationSummary& summary, string& out_name) {
+        std::string name = "C-32";
+        vector<pair<HFormula, Rational>> vect{
+            {HFormulaLFunction(HFormulaProduct(
+                HFormulaLeaf(FormulaNode::LEAF_NU, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0}),
+                HFormulaLeaf(FormulaNode::LEAF_XI, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k+l+1"), .l = 0})
+                ), FormulaNode::Symbolic("s")), Rational(1)},
+            {HFormulaLFunction(HFormulaOne(), FormulaNode::Symbolic("k*s")), Rational(-1)},
+            {HFormulaLFunction(HFormulaOne(), FormulaNode::Symbolic("x*k*s")), Rational(1)},
+        };
+        Relation formula = Relation(vect);
+        formula.classify_raw(name);
+        SymbolicInstantiation::assignment assignment;
+        bool good = is_instance_of(RelationSummary::no_early_bailout, summary, formula, &assignment, -1);
+
+        if (!good) {
+            return good;
+        }
+
+        /* Classifier cannot handle the full formula, check the missing part here */
+        auto xi_k = assignment["k"] + assignment["l"] + 1;
+        auto nu_k = assignment["k"];
+        if (assignment["x"] != ((xi_k + nu_k - 1) / nu_k)) {
+            return false;
+        }
+
+        out_name = name;
+        return good;
+    }
+
+    bool check_C33(const RelationSummary& summary, string& out_name) {
+        std::string name = "C-33";
+        vector<pair<HFormula, Rational>> vect{
+            {HFormulaLFunction(HFormulaProduct(
+                HFormulaLeaf(FormulaNode::LEAF_TAUK, (FormulaNode::LeafExtraArg){.k = 2, .l = 0}),
+                HFormulaLeaf(FormulaNode::LEAF_XI, (FormulaNode::LeafExtraArg){.k = 2, .l = 0})
+                ), FormulaNode::Symbolic("s")), Rational(1)},
+            {HFormulaLFunction(HFormulaProduct(
+                HFormulaLeaf(FormulaNode::LEAF_THETA),
+                HFormulaLeaf(FormulaNode::LEAF_XI, (FormulaNode::LeafExtraArg){.k = 2, .l = 0})
+                ), FormulaNode::Symbolic("s")), Rational(-1)},
+        };
+        Relation formula = Relation(vect);
+        formula.classify_raw(name);
+        bool good = is_instance_of(RelationSummary::no_early_bailout, summary, formula, NULL, -1);
+        out_name = name;
+        return good;
+    }
+
+    bool check_C34(const RelationSummary& summary, string& out_name) {
+        std::string name = "C-34";
+        vector<pair<HFormula, Rational>> vect{
+            {HFormulaLFunction(HFormulaProduct(
+                HFormulaLeaf(FormulaNode::LEAF_THETA),
+                HFormulaLeaf(FormulaNode::LEAF_JORDAN_T, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("l"), .l = 0}),
+                HFormulaLeaf(FormulaNode::LEAF_NU, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0})
+                ), FormulaNode::Symbolic("s")), Rational(1)},
+            {HFormulaLFunction(HFormulaProduct(
+                HFormulaLeaf(FormulaNode::LEAF_THETA),
+                HFormulaLeaf(FormulaNode::LEAF_JORDAN_T, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("l"), .l = 0})
+                ), FormulaNode::Symbolic("k*s+-l*k+l")), Rational(-1)},
+        };
+        Relation formula = Relation(vect);
+        formula.classify_raw(name);
+        bool good = is_instance_of(RelationSummary::no_early_bailout, summary, formula, NULL, -1);
+        out_name = name;
+        return good;
+    }
 
     vector<relation_classifier> classifiers{
         /*
@@ -1710,14 +1793,16 @@ private:
         &Relation::check_C17,
         &Relation::check_C18,
         &Relation::check_C19,
-
         &Relation::check_C24,
         &Relation::check_C25,
-
         &Relation::check_C27,
         &Relation::check_C28,
         &Relation::check_C29,
         &Relation::check_C30,
+        &Relation::check_C31,
+        &Relation::check_C32,
+        &Relation::check_C33,
+        &Relation::check_C34,
     };
 
 public:
