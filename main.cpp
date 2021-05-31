@@ -41,6 +41,10 @@ static constexpr GenerationConstraint custom_generation_config = {
     .max_score = 6,
 };
 
+#ifndef CZ_CONFIG
+    #define CZ_CONFIG custom_generation_config
+#endif
+
 int main([[maybe_unused]] int argc, [[maybe_unused]] char *argv[]) {
     precomputeInverses();
     X.setCoeff(1, 1);
@@ -52,7 +56,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char *argv[]) {
 
     auto t1 = std::chrono::high_resolution_clock::now();
     RelationGenerator manager(&latex);
-    add_relations(manager, latex, custom_generation_config);
+    add_relations(manager, latex, CZ_CONFIG);
 
     auto t2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<float> e21 = t2 - t1;
