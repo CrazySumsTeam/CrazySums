@@ -1178,7 +1178,7 @@ private:
         out_name = name;
         return good;
     }
-    bool check_C43(const RelationSummary& summary, string& out_name) {
+    bool check_D43(const RelationSummary& summary, string& out_name) {
         std::string name = "D-43";
         vector<pair<HFormula, Rational>> vect{
             {HFormulaLFunction(HFormulaProduct(
@@ -1269,7 +1269,7 @@ private:
     }
 
     bool check_D51(const RelationSummary& summary, string& out_name) {
-        std::string name = "C-51";
+        std::string name = "D-51";
         vector<pair<HFormula, Rational>> vect{
             {HFormulaLFunction(HFormulaProduct(
                 HFormulaLeaf(FormulaNode::LEAF_SIGMA, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0}),
@@ -1681,7 +1681,7 @@ private:
         &Relation::check_D40,
         &Relation::check_D41,
         &Relation::check_D42,
-        &Relation::check_C43,
+        &Relation::check_D43,
         /* D-44 and D-45 we won't find */
         &Relation::check_D46,
         &Relation::check_D47,
