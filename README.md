@@ -8,7 +8,7 @@ Implementation of an method to find new relations between Dirichlet L-Series.
 
 ## Build
 
-Use the `make` command build build and launch then program
+Use the `make` command to build and launch then program
 
 
 ## Outputs
