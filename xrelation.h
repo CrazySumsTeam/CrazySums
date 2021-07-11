@@ -922,7 +922,7 @@ private:
 
     bool check_D24(const RelationSummary& summary, string& out_name) {
         std::string name = "D-24";
-                vector<pair<HFormula, Rational>> vect{
+        vector<pair<HFormula, Rational>> vect{
             {HFormulaLFunction(HFormulaProduct(
                 HFormulaLeaf(FormulaNode::LEAF_XI, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0})),
                 FormulaNode::Symbolic("s")), Rational(1)},
@@ -938,7 +938,7 @@ private:
 
     bool check_D25(const RelationSummary& summary, string& out_name) {
         std::string name = "D-25";
-                vector<pair<HFormula, Rational>> vect{
+        vector<pair<HFormula, Rational>> vect{
             {HFormulaLFunction(HFormulaProduct(
                 HFormulaLeaf(FormulaNode::LEAF_LIOUVILLE),
                 HFormulaLeaf(FormulaNode::LEAF_SIGMA_PRIME, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0})),
@@ -956,7 +956,7 @@ private:
 
     bool check_D26(const RelationSummary& summary, string& out_name) {
         std::string name = "D-26";
-                vector<pair<HFormula, Rational>> vect{
+        vector<pair<HFormula, Rational>> vect{
             {HFormulaLFunction(HFormulaProduct(HFormulaLeaf(
                 FormulaNode::LEAF_PSI, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0})), FormulaNode::Symbolic("s")), Rational(1)},
             {HFormulaLFunction(HFormulaOne(), FormulaNode::Symbolic("2*s")), Rational(1)},
@@ -992,7 +992,7 @@ private:
 
     bool check_D28(const RelationSummary& summary, string& out_name) {
         std::string name = "D-28";
-                vector<pair<HFormula, Rational>> vect{
+        vector<pair<HFormula, Rational>> vect{
             {HFormulaLFunction(HFormulaProduct(HFormulaLeaf(
                 FormulaNode::LEAF_NU, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0})), FormulaNode::Symbolic("s")), Rational(1)},
             {HFormulaLFunction(HFormulaOne(), FormulaNode::Symbolic("k*s")), Rational(-1)},
@@ -1007,7 +1007,7 @@ private:
 
     bool check_D30(const RelationSummary& summary, string& out_name) {
         std::string name = "D-30";
-                vector<pair<HFormula, Rational>> vect{
+        vector<pair<HFormula, Rational>> vect{
             {HFormulaLFunction(HFormulaProduct(HFormulaLeaf(
                 FormulaNode::LEAF_RHO, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = FormulaNode::Symbolic("t")})), FormulaNode::Symbolic("s")), Rational(1)},
             {HFormulaLFunction(HFormulaOne(), FormulaNode::Symbolic("s+-k")), Rational(-1)},
@@ -1022,7 +1022,7 @@ private:
 
     bool check_D37(const RelationSummary& summary, string& out_name) {
         std::string name = "D-37";
-                vector<pair<HFormula, Rational>> vect{
+        vector<pair<HFormula, Rational>> vect{
             {HFormulaLFunction(HFormulaProduct(HFormulaLeaf(
                 FormulaNode::LEAF_SIGMA_PRIME, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0})), FormulaNode::Symbolic("s")), Rational(1)},
             {HFormulaLFunction(HFormulaOne(), FormulaNode::Symbolic("2*s+-2*k")), Rational(-1)},
@@ -1038,7 +1038,7 @@ private:
 
     bool check_D38(const RelationSummary& summary, string& out_name) {
         std::string name = "D-38";
-                vector<pair<HFormula, Rational>> vect{
+        vector<pair<HFormula, Rational>> vect{
             {HFormulaLFunction(HFormulaProduct(
                 HFormulaLeaf(FormulaNode::LEAF_LIOUVILLE),
                 HFormulaLeaf(FormulaNode::LEAF_SIGMA_PRIME, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("h"), .l = 0}),
@@ -1068,7 +1068,7 @@ private:
 
     bool check_D39(const RelationSummary& summary, string& out_name) {
         std::string name = "D-39";
-                vector<pair<HFormula, Rational>> vect{
+        vector<pair<HFormula, Rational>> vect{
             {HFormulaLFunction(HFormulaProduct(HFormulaLeaf(
                 FormulaNode::LEAF_SIGMA_PRIME, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("h"), .l = 0}),
                 HFormulaLeaf(FormulaNode::LEAF_SIGMA, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0})), FormulaNode::Symbolic("s")), Rational(1)},
@@ -1096,7 +1096,7 @@ private:
 
     bool check_D40(const RelationSummary& summary, string& out_name) {
         std::string name = "D-40";
-                vector<pair<HFormula, Rational>> vect{
+        vector<pair<HFormula, Rational>> vect{
             {HFormulaLFunction(HFormulaProduct(
                 HFormulaLeaf(FormulaNode::LEAF_LIOUVILLE),
                 HFormulaLeaf(FormulaNode::LEAF_SIGMA_PRIME, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("h"), .l = 0}),
@@ -1124,7 +1124,7 @@ private:
 
     bool check_D41(const RelationSummary& summary, string& out_name) {
         std::string name = "D-41";
-                vector<pair<HFormula, Rational>> vect{
+        vector<pair<HFormula, Rational>> vect{
             {HFormulaLFunction(HFormulaProduct(
                 HFormulaLeaf(FormulaNode::LEAF_SIGMA_PRIME, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("h"), .l = 0}),
                 HFormulaLeaf(FormulaNode::LEAF_SIGMA_PRIME, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0})),
@@ -1152,7 +1152,7 @@ private:
 
     bool check_D42(const RelationSummary& summary, string& out_name) {
         std::string name = "D-42";
-                vector<pair<HFormula, Rational>> vect{
+        vector<pair<HFormula, Rational>> vect{
             {HFormulaLFunction(HFormulaProduct(
                 HFormulaLeaf(FormulaNode::LEAF_LIOUVILLE),
                 HFormulaLeaf(FormulaNode::LEAF_SIGMA_PRIME, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("h"), .l = 0}),
