@@ -417,7 +417,7 @@ private:
             vector<string> tmp = instantiate_split_helper(n_symbol2, "*");
             string name;
             bool found_unkown_var = false;
-            
+
             for (size_t pos = 0; pos < tmp.size(); pos++) {
                 if (tmp[pos][0] >= '0' && tmp[pos][0] <= '9') {
                     times = times * std::stoi(tmp[pos]);
@@ -1195,7 +1195,7 @@ private:
         out_name = name;
         return good;
     }
-    
+
     bool check_D46(const RelationSummary& summary, string& out_name) {
         std::string name = "D-46";
         vector<pair<HFormula, Rational>> vect{
@@ -1324,7 +1324,7 @@ private:
         out_name = name;
         return good;
     }
-    
+
     bool check_D55(const RelationSummary& summary, string& out_name) {
         std::string name = "D-55";
         vector<pair<HFormula, Rational>> vect{
@@ -1719,6 +1719,52 @@ private:
         return good;
     }
 
+    bool check_C35(const RelationSummary& summary, string& out_name) {
+        std::string name = "C-35";
+        vector<pair<HFormula, Rational>> vect{
+            {HFormulaLFunction(HFormulaProduct(
+                HFormulaLeaf(FormulaNode::LEAF_JORDAN_T, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0}),
+                HFormulaLeaf(FormulaNode::LEAF_JORDAN_T, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("l"), .l = 0})
+                ), FormulaNode::Symbolic("2*l")), Rational(1)},
+            {HFormulaLFunction(HFormulaProduct(
+                HFormulaLeaf(FormulaNode::LEAF_JORDAN_T, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0}),
+                HFormulaLeaf(FormulaNode::LEAF_JORDAN_T, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("l+k"), .l = 0})
+                ), FormulaNode::Symbolic("3*l")), Rational(-1)},
+            {HFormulaLFunction(HFormulaOne(), FormulaNode::Symbolic("l+-k")), Rational(-1)},
+            {HFormulaLFunction(HFormulaOne(), FormulaNode::Symbolic("2*l")), Rational(-1)},
+            {HFormulaLFunction(HFormulaOne(), FormulaNode::Symbolic("l")), Rational(1)},
+            {HFormulaLFunction(HFormulaOne(), FormulaNode::Symbolic("2*l+-2*k")), Rational(1)},
+        };
+        Relation formula = Relation(vect);
+        formula.classify_raw(name);
+        bool good = is_instance_of(RelationSummary::no_early_bailout, summary, formula, NULL, -1);
+        out_name = name;
+        return good;
+    }
+
+    bool check_C36(const RelationSummary& summary, string& out_name) {
+        std::string name = "C-36";
+        vector<pair<HFormula, Rational>> vect{
+            {HFormulaLFunction(HFormulaProduct(
+                HFormulaLeaf(FormulaNode::LEAF_JORDAN_T, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0}),
+                HFormulaLeaf(FormulaNode::LEAF_JORDAN_T, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("2*k"), .l = 0})
+                ), FormulaNode::Symbolic("4*k")), Rational(1)},
+            {HFormulaLFunction(HFormulaProduct(
+                HFormulaLeaf(FormulaNode::LEAF_JORDAN_T, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("k"), .l = 0}),
+                HFormulaLeaf(FormulaNode::LEAF_JORDAN_T, (FormulaNode::LeafExtraArg){.k = FormulaNode::Symbolic("4*k"), .l = 0})
+                ), FormulaNode::Symbolic("9*i")), Rational(-1)},
+            {HFormulaLFunction(HFormulaOne(), FormulaNode::Symbolic("k")), Rational(-1)},
+            {HFormulaLFunction(HFormulaOne(), FormulaNode::Symbolic("6*k")), Rational(-1)},
+            {HFormulaLFunction(HFormulaOne(), FormulaNode::Symbolic("2*k")), Rational(1)},
+            {HFormulaLFunction(HFormulaOne(), FormulaNode::Symbolic("3*k")), Rational(1)},
+        };
+        Relation formula = Relation(vect);
+        formula.classify_raw(name);
+        bool good = is_instance_of(RelationSummary::no_early_bailout, summary, formula, NULL, -1);
+        out_name = name;
+        return good;
+    }
+
     vector<relation_classifier> classifiers{
         /*
             * D formulae,
@@ -1803,6 +1849,8 @@ private:
         &Relation::check_C32,
         &Relation::check_C33,
         &Relation::check_C34,
+        &Relation::check_C35,
+        &Relation::check_C36,
     };
 
 public:
